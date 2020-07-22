@@ -17,43 +17,11 @@ def preprocess(df_):
 
 
 # load in dataset
-url="https://raw.githubusercontent.com/hip-hipJorge/K-Means_Clustering/master/FB-Live.csv"
+url="https://raw.githubusercontent.com/hip-hipJorge/K-Means_Clustering/master/seeds_dataset.txt"
 read_data=requests.get(url).content
-fb_live = pd.read_csv(io.StringIO(read_data.decode('utf-8')))
+seed_df= pd.read_csv(io.StringIO(read_data.decode('utf-8')))
+print(seed_df.head())
 
-# ready dataset
-fb_live = preprocess(fb_live)
-
-x = fb_live.iloc[0:15, 2]
-y_all = fb_live.iloc[0:15, 3]
-y_cmnts = fb_live.iloc[0:15, 4]
-y_shares = fb_live.iloc[0:15, 5]
-y_likes = fb_live.iloc[0:15, 6]
-y_loves = fb_live.iloc[0:15, 7]
-y_wows = fb_live.iloc[0:15, 8]
-y_hahas = fb_live.iloc[0:15, 9]
-y_sads = fb_live.iloc[0:15, 10]
-y_angrys = fb_live.iloc[0:15, 11]
-
-plt.plot_date(x, y_all, c='b', label='reactions')
-plt.plot_date(x, y_cmnts, c='g', label='comments')
-plt.plot_date(x, y_shares, c='r', label='shares')
-plt.plot_date(x, y_likes, c='c', label='likes')
-plt.plot_date(x, y_loves, c='m', label='loves')
-plt.plot_date(x, y_wows,c='y', label='wows')
-plt.plot_date(x, y_hahas, c='k', label='hahas')
-plt.plot_date(x, y_sads, c='burlywood', label='sads')
-plt.plot_date(x, y_angrys, c='chartreuse', label='angrys')
-
-
-plt.legend(loc=2)
-plt.gcf().autofmt_xdate()
-date_format = mpl_dates.DateFormatter('%b %d, %a')
-plt.gca().xaxis.set_major_formatter(date_format)
-plt.title('Date vs. # of Reactions')
-plt.xlabel('Date (2018)')
-plt.ylabel('# of FB reactions')
-plt.show()
 
 '''
 
