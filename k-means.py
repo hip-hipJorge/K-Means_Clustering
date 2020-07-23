@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
 # load in dataset
-url = "https://raw.githubusercontent.com/hip-hipJorge/K-Means_Clustering/plan-b/seeds_dataset.txt"
+url = "https://raw.githubusercontent.com/hip-hipJorge/K-Means_Clustering/master/seeds_dataset.txt"
 read_data = requests.get(url).content
 seed_df = pd.read_csv(io.StringIO(read_data.decode('utf-8')),
                       delimiter='\t', names=['area', 'perimeter', 'compactness', 'length_of_kernel',
